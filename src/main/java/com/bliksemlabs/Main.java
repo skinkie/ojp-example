@@ -91,5 +91,7 @@ public class Main {
         OJP parsed = (OJP) ojpUnmarshaller.unmarshal(inputStream);
 
         System.out.println(parsed.getOJPRequest().getServiceRequest().getRequestorRef());
+        OJPStopEventRequestStructure ojpStopEventRequest = (OJPStopEventRequestStructure) parsed.getOJPRequest().getServiceRequest().getAbstractFunctionalServiceRequest().get(0).getValue();
+        System.out.println(ojpStopEventRequest.getParams().getNumberOfResults());
     }
 }
