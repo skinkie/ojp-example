@@ -5,8 +5,6 @@ import de.vdv.ojp.ObjectFactory;
 import de.vdv.ojp.model.*;
 import jakarta.xml.bind.*;
 
-import javax.xml.datatype.DatatypeFactory;
-import javax.xml.datatype.XMLGregorianCalendar;
 import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
@@ -18,7 +16,6 @@ import java.io.ByteArrayOutputStream;
 import java.io.OutputStream;
 import java.math.BigInteger;
 import java.time.ZonedDateTime;
-import java.util.GregorianCalendar;
 
 public class Main {
     private static ObjectFactory ojpObjectFactory = new ObjectFactory();
@@ -49,14 +46,6 @@ public class Main {
             transformer.setOutputProperty(OutputKeys.INDENT, "yes");
             transformer.setOutputProperty("{http://xml.apache.org/xslt}indent-amount", "2");
             transformer.transform(new DOMSource(domResult.getNode()), new StreamResult(outputStream));
-    }
-
-    public static XMLGregorianCalendar getXMLGregorianCalendarNow() throws Exception {
-        GregorianCalendar gregorianCalendar = new GregorianCalendar();
-        DatatypeFactory datatypeFactory = DatatypeFactory.newInstance();
-        XMLGregorianCalendar now =
-                datatypeFactory.newXMLGregorianCalendar(gregorianCalendar);
-        return now;
     }
 
     public static void main(String[] args) throws Exception {
